@@ -1,0 +1,33 @@
+{% extends "views/base.html" %}
+
+{% block title %}Statistics{% endblock %}
+
+{% block vis_initialization%}
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script> 
+  <script type="text/javascript"> 
+    google.load('visualization', '1', {packages: ['motionchart']});
+ 
+    function drawVisualization() {
+    var data = new google.visualization.DataTable();
+      data.addRows({{rowcount}});
+      data.addColumn('string', 'Name');
+      data.addColumn('number', 'Hours');
+      data.addColumn('number', 'Accumulation');
+{{data|safe}}
+      var options = {};
+      options["width"] = 800;
+      options["height"] = 400;
+      options["state"] = '{"duration":{"timeUnit":"Y","multiplier":1},"showTrails":true,"time":"1900-03-23T17:39:21.600","yZoomedDataMin":0,"nonSelectedAlpha":0.4,"iconKeySettings":[],"yZoomedIn":false,"xZoomedDataMin":-2208988800000,"xLambda":1,"playDuration":15000,"yAxisOption":"2","xZoomedIn":false,"uniColorForNonSelected":false,"sizeOption":"_UNISIZE","iconType":"BUBBLE","dimensions":{"iconDimensions":["dim0"]},"xZoomedDataMax":-2177452800000,"yLambda":1,"xAxisOption":"_TIME","colorOption":"_UNIQUE_COLOR","orderedByY":false,"yZoomedDataMax":10,"orderedByX":false}';
+ 
+      var motionchart = new google.visualization.MotionChart(
+          document.getElementById('visualization'));
+      motionchart.draw(data, options);
+    } 
+    google.setOnLoadCallback(drawVisualization);
+  </script> 
+{% endblock %}
+
+{% block content %}
+<div id="visualization" style="width: 800px; height: 400px;"></div>
+<a href="../">Back to index</a>
+{% endblock %}

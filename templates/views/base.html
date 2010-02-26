@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <link rel="stylesheet" href="{{base}}/media/drinkcounter/style.css" />
+    {% block vis_initialization %}{% endblock %}
+    {% block refresh %}{% endblock %}
+    <title>{% block title %}title{% endblock %}</title>
+  </head>
+  <body>
+    <div id="header">
+    </div>
+    <div id="container">
+      <div id="sidebar">
+        <h2>Mený</h2>
+      </div>
+      <div id="content">
+        {% block content %}content{% endblock %}
+      </div>
+    </div>
+  </body>
+
+</html>

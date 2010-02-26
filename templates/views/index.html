@@ -1,0 +1,27 @@
+{% extends "views/base.html" %}
+
+{% block title %}Lindex{% endblock %}
+{% block refresh %}<meta http-equiv="refresh" content="10;url={{base}}/drinkcounter/" />{% endblock %}
+
+{% block content %}
+  <table>
+    <tr>
+      <th>Name</th><th>Drinks</th><th>Idle</th><th>Add</th>
+    </tr>
+    {% for personinfo in personinfos %}
+      <tr>
+        <td>{{personinfo.name}}</td>
+        <td>{{personinfo.drinks}}</td>
+        <td>{{personinfo.idle}}</td>
+        <td><a href="add_drink/{{personinfo.id}}/">Add</a></td>
+      </tr>
+    {% endfor %}
+  </table>
+  <a href="statistics/">See statistics</a>
+
+<pre>
+The ubercool interfaces:
+  Add drink: {{base}}/drinkcounter/add_drink/[personid]/
+  Get datas: {{base}}/drinkcounter/get_datas/
+</pre>
+{% endblock %}
