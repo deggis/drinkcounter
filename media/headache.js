@@ -34,6 +34,7 @@
          fontSize: 50 + Math.random() * 50,
          backgroundColor: genHex(),
          color: genHex(),
+         padding: 5 + Math.random() * 20,
       }, 3000 );
 
       randomizeColorsForChildren($(this));
